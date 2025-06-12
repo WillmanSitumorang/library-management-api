@@ -1,5 +1,7 @@
 package com.example.library_book.service;
 
+import com.example.library_book.model.Book;
+import com.example.library_book.repository.BookRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
