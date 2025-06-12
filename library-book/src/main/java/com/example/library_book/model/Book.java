@@ -16,8 +16,10 @@ public class Book {
 
     private String title;
 
-    @JsonProperty("author")
+    @JsonProperty("author") //untuk snake_case
     private String author;
+    @JsonProperty("year")
     private Integer year;
+    @JsonProperty("stock")
     private Integer stock;
 }

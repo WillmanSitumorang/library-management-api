@@ -23,7 +23,7 @@ public class BookService {
     public Page<Book> getBooks(int page, int size, String title) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("title").ascending());
 
-        if (title != null && !title.isBlank()) {
+        if (title != null && !title.isBlank()) { //null itu tidak ada, blank itu ada tapi kosong (spasi doang)
             return repo.findByTitleContainingIgnoreCase(title, pageable);
         } else {
             return repo.findAll(pageable);
