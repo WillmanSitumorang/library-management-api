@@ -42,10 +42,11 @@ public class BookService {
         return repo.save(existing);
     }
 
-    public void deleteBook(Long id) {
+    public Book deleteBook(Long id) {
         Book book = repo.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found"));
         repo.delete(book);
+        return book;
     }
 
     public List<Book> getAllBooks() {
@@ -54,5 +55,10 @@ public class BookService {
 
     public Book saveBook(Book book) {
         return repo.save(book);
+    }
+
+    public Book getBookById(Long id) {
+        return repo.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found"));
     }
 }

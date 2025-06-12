@@ -17,17 +17,23 @@ public class BookController {
     }
 
     @GetMapping
-    public Page<Book> getAllBooks(
+    public Page<Book> getBooks(
             @RequestParam(defaultValue = "0")  int page,
             @RequestParam(defaultValue = "5") int size,
             @RequestParam(required = false) String title
     ){
-        return bookService.getAllBooks(page, size, title);
+        return bookService.getBooks(page, size, title);
     }
 
     @PostMapping
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
         return ResponseEntity.ok(bookService.saveBook(book));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Book> getBookById(@PathVariable Long id) {
+        Book book = bookService.getBookById(id);
+        return ResponseEntity.ok(book);
     }
 
     @PutMapping("/{id}")
@@ -36,8 +42,10 @@ public class BookController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
-        bookService.deleteBook(id);
-        return ResponseEntity.noContent().build();
+    public String deleteBook(@PathVariable Long id) {
+        var book = bookService.deleteBook(id);
+
+//        return ResponseEntity.ok().build();
+        return "Berhasil menghapus buku dengan Judul: " + book.getTitle();
     }
 }
