@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MemberService {
@@ -23,7 +24,7 @@ public class MemberService {
 
     public Member getMemberById(Long id){
         return memberRepo.findById(id)
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found"));
+                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found"));
     }
 
     public Member saveMember(Member member){
@@ -31,8 +32,8 @@ public class MemberService {
     }
 
     public List<Book> getBorrowedBooksByMemberId(Long memberId) {
-        List<Borrow> borrows = borrowRepo.findByMemberIdAndReturnDateIsNull(memberId);
-        return borrows.stream()
+        List<Borrow> borrow = borrowRepo.findByMemberId(memberId);
+        return borrow.stream()
                 .map(Borrow::getBook)
                 .toList();
     }

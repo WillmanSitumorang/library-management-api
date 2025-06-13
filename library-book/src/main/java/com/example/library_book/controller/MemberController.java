@@ -4,12 +4,14 @@ import com.example.library_book.model.Book;
 import com.example.library_book.model.Member;
 import com.example.library_book.service.MemberService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/members")
+@Validated
 public class MemberController {
     private final MemberService memberService;
 

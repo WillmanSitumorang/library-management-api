@@ -1,5 +1,6 @@
 package com.example.library_book.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,5 +21,6 @@ public class Member {
     private String email;
 
     @JsonProperty("join_date")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate joinDate;
 }
