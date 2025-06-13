@@ -32,8 +32,13 @@ public class MemberService {
     }
 
     public List<Book> getBorrowedBooksByMemberId(Long memberId) {
+<<<<<<< HEAD
         List<Borrow> borrow = borrowRepo.findByMemberId(memberId);
         return borrow.stream()
+=======
+        List<Borrow> borrows = borrowRepo.findByMemberId(memberId);
+        return borrows.stream()
+>>>>>>> 50cbae731c7c41fa8713250cf80691889e59a0cc
                 .map(Borrow::getBook)
                 .toList();
     }
