@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface BorrowRepository extends JpaRepository<Borrow, Long> {
-    List<Borrow> findByMemberIdAndReturnDateIsNull(Long memberId);
+    List<Borrow> findByMemberId(Long memberId);
 }

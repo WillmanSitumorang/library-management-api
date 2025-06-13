@@ -31,7 +31,7 @@ public class MemberService {
     }
 
     public List<Book> getBorrowedBooksByMemberId(Long memberId) {
-        List<Borrow> borrows = borrowRepo.findByMemberIdAndReturnDateIsNull(memberId);
+        List<Borrow> borrows = borrowRepo.findByMemberId(memberId);
         return borrows.stream()
                 .map(Borrow::getBook)
                 .toList();
